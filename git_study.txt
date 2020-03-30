@@ -1,0 +1,78 @@
+1> git init
+   初始化一个仓库
+
+2> git branch  查看有什么仓库
+
+3> git checkout xxx    切换到xxx仓库
+
+4> echo "xyz.com" > text.txt     创建text.txt文件 文件内容为 xyz.com
+
+5> git status  查看状态，有什么文件没有提交或出现了什么新的文件
+   git status -s
+
+
+6>git add xxx   添加xxx缓存区
+
+7>git commit -m "我提交了文件"   提交添加的东西到仓库， -m "xxx"  表示提交的说明
+    
+8> git clone xxx 把什么下载到仓库中
+
+9>git rm xxx    删除文件
+  git commit -m "删除xxx文件"
+
+10>git rm -r xxx   删除文件夹 
+
+
+11>git diff 查看修改了什么
+
+12>git remote -v 查看远程仓库
+
+
+
+
+
+远程拉取与提交github
+
+准备工作
+1>创建秘钥， 进入c:/用户/.ssh 文件夹中
+
+  在gitbash中输入  ssh-keygen -t rsa -C "1056156342@qq.com"
+
+  复制id.pub 里面的内容到GitHub setting的ssh中
+
+2>验证
+   ssh -T git@github.com
+
+3> 添加远程链接 
+git remote add origin git@github.com:xyz06/yuanfang.git
+
+   origin   		为链接的名字，可任意修改
+   xyz06    		github用户名
+   yuanfang.git  	仓库
+
+
+拉取
+1>git fetch origin            拉取远程仓库本地没有的数据
+2>git merge origin/master     把拉取的与当前master合并
+
+
+推送
+    x>git pull --rebase origin master
+1>git push origin master  将当前的master推送到远程仓库origin
+  上传文件
+
+
+
+git add 问题
+1.出现
+   warning: CRLF will be replaced by LF in END_ALL _SPIDER/jidong_pc_1.py.
+The file will have its original line endings in your working directory
+
+  解决
+     git config --global core.autocrlf input
+
+
+
+  解决
+      git config --global core.autocrlf input
+  
