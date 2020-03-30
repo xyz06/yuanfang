@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<script>
+
+    function init(){
+        var marks = new Array("华为", "苹果","三星");
+        var selm = document.getElementById("marks");
+        for(var i = 0; i<marks.length; ++i){
+            selm.options.add(new Option(marks[i],marks[i]));
+        }
+        selm.selectedIndex = 0;
+        display();
+    }
+    function display(){
+        try{
+            var http_ajax = new XMLHttpRequest();
+            var selm = document.getElementById("marks");
+            var m = selm.options[selm.selectedIndex].text;
+            http_ajax.open("get","/phones?mark="+m,false);
+            http_ajax.send(null);
+            msg = http_ajax.responseText;
+            obj = eval("("+msg+")");
+            s = "<table width='200' border='1'><tr><td>型号</td><td>价格</td></tr>";
+            for(var i = 0;i<obj.phones.length;++i){
+                s += "<tr><td>" + obj.phones[i].model +"</td><td>" + obj.phones[i].price+"</td></tr>";
+            }
+            s+="</table>";
+
+            document.getElementById("phones").innerHTML = s;
+        }catch(e){
+            alert(e);
+        }
+    }
+</script>
+<body onload="init()">
+Testing<br>
+<span id="hmsg">HTML Message</span><br>
+<span id="jmsg"></span><br>
+<span id="smsg"></span>
+<div class="phone">
+    <p class = "price" name="price">8000元</p>
+    <p class = "name" id="p_name"><h3>苹果</h3></p>
+    <p><a href="#">联通通讯</a>/  <a href="#">移动通讯</a></p>
+</div>
+<div>选择品牌<select id="marks" onchange="display()"></select></div>
+<div id="phones"></div>
+<a href='/'>退出</a>
+</body>
+</html>
