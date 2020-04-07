@@ -1,0 +1,17 @@
+检查端口并结束进程
+
+1>netstat -ano                   #查看所有的端口占用情况
+
+2>netstat -aon|findstr "9050"    #查看指定端口的占用情况
+				 #9050为PID号
+
+3>tasklist|findstr "2016"        #查看PID对应的进程
+
+
+4>taskkill /f /t /im   xxx.exe   #结束进程
+
+
+
+
+
+

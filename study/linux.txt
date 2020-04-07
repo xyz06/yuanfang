@@ -1,0 +1,29 @@
+zip
+
+1> zip -r xxx.zip  xxx         #压缩xxx文件夹为xxx.zip包
+
+2> zip xxx.zip  file1,flie2    #压缩file1，file2文件为xxx.zip包
+
+
+3> unzip xxx.zip -d xxx       #解压xxx.zip 为 xxx
+
+4> unzip -v xxx.zip           #查看里面的内容
+
+5> unzip -j xxx.zip            #把里面所有文件解压到第一级目录
+
+
+tar 
+
+1> tar -zxv -f xxx.tar.gz   -C c:/temp/xxx      #把xxx.tar.gz 解压到 c:/temp/xxx  
+            
+        -z  表示解压缩  tar.gz 文件
+	-x  表示执行压缩
+	-v  表示列出解压时的信息
+	-f  后接要解压的文件名
+	-C  指定解压的路径
+
+2>  tar -zcv  -f xxx.tar.gz xxx      #把xxx文件打包为xxx.tar.gz
+
+        -c  表示执行打包
+
+
