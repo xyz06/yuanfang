@@ -11,27 +11,21 @@
    git status -s
 
 
-6>git add xxx        添加xxx缓存区
+6>git add xxx   添加xxx缓存区
 
 7>git commit -m "我提交了文件"   提交添加的东西到仓库， -m "xxx"  表示提交的说明
     
-8> git clone xxx     把什么下载到仓库中
+8> git clone xxx 把什么下载到仓库中
 
-9>git rm xxx         删除文件
+9>git rm xxx    删除文件
   git commit -m "删除xxx文件"
 
 10>git rm -r xxx   删除文件夹 
 
 
-11>git diff           查看修改了什么
+11>git diff 查看修改了什么
 
-12>git remote -v      查看远程仓库
- 
-13>git mv old new     修改文件名
-   git commit -m "重命名为new"
-   
-   git mv -f old new 重命名文件夹
-   git commit -m  "文件夹重命名为new"
+12>git remote -v 查看远程仓库
 
 
 
@@ -73,11 +67,6 @@ git add 问题
 1.出现
    warning: CRLF will be replaced by LF in END_ALL _SPIDER/jidong_pc_1.py.
 The file will have its original line endings in your working directory
-
-  解决
-     git config --global core.autocrlf input
-
-
 
   解决
       git config --global core.autocrlf input

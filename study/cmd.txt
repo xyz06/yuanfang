@@ -1,0 +1,36 @@
+1>文件夹操作 
+   md xxx    			 #创建xxx文件夹
+
+   rd  xxx                       #删除xxx文件夹
+	
+
+2>文件操作
+
+ move xxx.txt   d:/xxx         #移动xxx.txt到d:/xxx文件夹下
+
+ del xxx.txt                   #删除文件
+
+ ren xxx/xxx.txt   x1/x1.txt    #更改xxx文件夹或文件为x1
+
+
+3>显示文件目录
+  dir                            #显示目录中的内容
+
+  tree  			 #显示目录结构
+
+
+4>cls                            #清屏
+
+	
+5>net share                      #查看有什么共享文件夹
+  
+  net share   ipc$  /del         #删除ipc$共享
+
+  net user                        #查看有哪些用户
+
+  net user  用户名                #查看用户的属性登录情况
+
+   
+
+  
+

@@ -1,0 +1,93 @@
+zip
+
+1> zip -r xxx.zip  xxx         #压缩xxx文件夹为xxx.zip包
+
+2> zip xxx.zip  file1,flie2    #压缩file1，file2文件为xxx.zip包
+
+
+3> unzip xxx.zip -d xxx       #解压xxx.zip 为 xxx
+
+4> unzip -v xxx.zip           #查看里面的内容
+
+5> unzip -j xxx.zip            #把里面所有文件解压到第一级目录
+
+
+tar 
+
+1> tar -zxv -f xxx.tar.gz   -C c:/temp/xxx      #把xxx.tar.gz 解压到 c:/temp/xxx  
+            
+        -z  表示解压缩  tar.gz 文件
+	-x  表示执行压缩
+	-v  表示列出解压时的信息
+	-f  后接要解压的文件名
+	-C  指定解压的路径
+
+2>  tar -zcv  -f xxx.tar.gz xxx      #把xxx文件打包为xxx.tar.gz
+
+        -c  表示执行打包
+
+
+
+mkdir   创建目录
+
+1> mkdir xx        
+
+2> mkdir -p  a/b/c          #创建多级目录
+
+
+touch   创建文件
+
+1> touch xxx 
+
+
+
+mv      移动/重命名 文件/目录
+
+1> mv  xx  ./tmp             #把xx移动到当前文件夹tmp里面
+
+20> mv  a.txt  b.txt       #把xx.txt重命名为xxx.txt
+
+
+cp      复制
+
+1> cp /tmp/a.txt  b.txt      #把/tmp/a.txt  复制到当前目录名字为 b.txt
+
+2> cp -R  /tmp   newtmp      #把/tmp 文件夹 复制到当前命名为 newtmp
+
+3> cp -p  /etc/sysconfig/network-script/ifc-en33  ./if-en33-cp   
+
+      -p   复制时保留权限
+
+
+rm     删除文件/目录
+
+1> rm -f a.txt  
+
+2> rm -rf xxx       #删除文件夹
+
+    -f  强制删除
+    -r  删除文件夹
+
+
+rmdir xxx   删除空文件夹
+
+
+
+
+chmod  权限管理
+
+1> chmod 777 xxx
+   
+   第一个 7     为自己的权限
+   第二个 7     为跟自己同组用户的权限
+   第三个 7     为其他用户权限
+
+     4  +   2    +  1  = 7
+     
+      4  表示可读    r
+      2  表示可写    w
+      1  表示可执行  x
+ 
+
+e.g   chmod 744  xxx   #自己可执行可读可写，同组用户可读，其他用户可读
+      
