@@ -1,0 +1,134 @@
+1>打开服务
+  
+    (1)cd d:/mongo/bin
+    (2)mongod --dbpath d:/data/db
+
+     [注意]:d:/mongo/bin  是mongo的安装目录
+
+2>连接mongo
+
+    (1)cd d:/mongo/bin
+    (2)mongo
+
+3>创建用户管理员
+
+    (1)显示有哪些数据库
+        show dbs
+    (2) 选择admin 
+	use admin
+    (3) 创建用户管理员，[注意：看roles]
+	db.createUser(
+    {
+	  user : "my_tester",
+	  pwd : "123456",
+	  roles: [ { role : "userAdminAnyDatabase", db : "admin" } ]
+     }
+     )
+     
+       
+     role      readAnyDatabase: 在所有数据库上都有读取数据的权限
+
+	       readWriteAnyDatabase: 在所有数据库上都有读写数据的权限
+
+               userAdminAnyDatabase: 在所有数据库上都有管理user的权限
+
+               dbAdminAnyDatabase: 管理所有数据库的权限
+
+
+               read
+               readWrite
+
+
+               root:超级用户
+
+     (4)登录账号
+        db.auth("superuser","123456")
+        输出 1 表示登录成功
+     
+     (5)查看用户
+        show users
+
+
+4>创建数据库
+    use database_name    不存在则创建
+   
+5>删除数据库
+      
+    (1) 先进入想要删除的数据库
+         use database_name
+    (2) 删除
+         db.dropDatabase()
+    (3) 查看结果
+         show dbs
+
+6>创建集合
+   --
+     (1)db.createCollection("table")
+     (2) 查看结果
+         show collections / show tables
+
+   --
+     (1)db.table.insert({"name":"xyz"})   插入数据便创建table集合
+
+7>删除集合
+   db.table.drop()
+
+
+8>查看数据
+   
+   (1)查看全部
+        db.table.find()
+   (2)查看一条
+        db.table.find_one()
+   (3)查看指定条件 
+        例：name=xyz
+        db.table.find_one({name:"xyz"})  
+
+        条件查询
+            (>)  大于 ---     $gt
+            (<)  小于 ---     $lt
+            (>=)  大于等于 ---$gte
+            (<= ) 小于等于 ---$lte
+             
+                   或者  ---  $or
+
+	例：
+             db.table.find({
+                   $or:[
+                        {name:"xyz"} , {name:"joe"} 
+                   ]
+                   age: { $gt : 18 }
+              })                 
+
+
+	查找name为xyz或者joe，年龄大于18 的信息
+
+
+    (4)查看想要的   1表示显示   0表示不显示
+
+       db.table.find({},{name:1, _id:0})
+       只查看name
+
+
+    (5)排序         1表示升序    -1表示降序
+     
+          db.table.find().sort({name:-1}) 
+    
+    
+    (6)查看前n 条信息
+         
+         db.table.find().limit(1,2)
+      
+
+9>更新数据
+    db.table.update({name:"xyz"},{'$set': {"age":23}})
+				   ------
+    把name为xyz的年龄改为23
+
+10>删除数据
+   
+   (1)删除单条记录    name=xyz 的全部信息
+       db.table.remove({name:"xyz"})
+   (2)删除集合全部记录
+       db.table.remove({})
+
