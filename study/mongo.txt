@@ -19,7 +19,7 @@
     (3) 创建用户管理员，[注意：看roles]
 	db.createUser(
     {
-	  user : "my_tester",
+	  user : "superuser",
 	  pwd : "123456",
 	  roles: [ { role : "userAdminAnyDatabase", db : "admin" } ]
      }
@@ -117,8 +117,45 @@
     
     (6)查看前n 条信息
          
-         db.table.find().limit(1,2)
-      
+         db.table.find({},{name:1,_id:0}).limit(2)
+        
+    (7)skip（m）跳过m条查看,结合limit（n）
+    
+         db.table.find().limt(2).skip(2)
+         ---skip(2)跳过俩条查看
+         ---limit(2)可以查看前俩条
+         
+         总的意思：跳2步取2条信息
+
+
+    (8)查看name相同的人有多少人
+         
+          db.table.aggregate([{ $group:{ 
+                    _id: "$name",
+			  ------
+                    totle: {
+                          $sum:1
+		     }
+                 }}])
+                 
+        
+        解释 _id : "$name"     $ + 表示要计算的字段name    _id键名不能改
+        
+             totle: { $sum:1}     $sum:1表示计算总出现的次数     totle键名任意修改
+             
+       
+    (9)查看name相同的人平均年龄、最大年龄、最小年龄
+
+       db.table.aggregate([{$group:{
+                 _id:"$name",
+                 nameAvg:{ $avg:"$age"}
+                 nameMin:{ $min:"$age"}
+		 nameMax:{ $max:"$age"}
+
+                }}])
+
+              
+    
 
 9>更新数据
     db.table.update({name:"xyz"},{'$set': {"age":23}})
@@ -132,3 +169,25 @@
    (2)删除集合全部记录
        db.table.remove({})
 
+
+11>索引
+  
+    (1)db.table.createIndex({name:1})
+        为name字段创建  1 升序索引
+
+
+    (2)唯一索引
+         db.table.createIndex({name:-1}, {'unique':true})
+   
+         为name字段加索引 -1 倒叙    unique 唯一性
+         下次插入数据时，name必须不同
+
+    (3)查看索引
+         db.table.getIndexes()
+
+    (4)删除索引
+          根据db.table.getIndexes()查看 name的值就是索引名
+       
+          db.table.dropIndex(索引名)
+           
+          
