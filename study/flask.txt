@@ -1,0 +1,64 @@
+创建flask server
+
+1>import flask
+
+
+2>创建app
+  
+   app = flask.Flask(__name__)
+
+3>创建路由及调用的方法
+
+
+   @app.route("/", methods=['GET','POST']
+   def helloword():
+        return "hello world"
+
+
+
+
+
+
+server  获取client提交的数据
+
+1> 获取client 的提交的参数值方法
+
+   1.  flask.request.values.get("xxx")      #post跟get 都能获取
+
+   2.  flask.request.agrs.get("xxx")        #获取get
+
+   3.  flask.request.form.get("xxx")        #获取post
+
+
+2> 获取client 上传的文件
+
+   flask.request.get_data()
+
+
+
+
+
+client 向server提交数据 
+
+1>上传文件
+    if os.path.exists(fileName):
+        fobj = open(fileName, "rb")
+        data = fobj.read()
+        fobj.close()
+        p = fileName.rfind("\\")
+        fileName = fileName[p + 1:]
+        print("准备上传：" + fileName)
+  
+  	header = { 'content-type':'application/octet-stream'}
+   	url = url + "?fileName=' + urllib.parse.quote(fileName)
+   	req = urllib.request.Request(url, data, header)
+   	data = urllb.request.urlopen(req)
+   	msg = data.read().decode()
+   	msg = resp.read().decode()
+        if msg == "OK":
+           print("成功上传：", len(data))
+        else:
+            print(msg)
+
+
+     
