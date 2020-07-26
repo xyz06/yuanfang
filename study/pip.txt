@@ -1,0 +1,26 @@
+1>查看已安装的包
+   
+   1.输入到txt文件中
+
+        pip freeze >requirements.txt
+
+   2.pip list  
+       
+
+2>安装包
+	
+  pip install xxx           #最新版本
+
+  pip install xxx==1.1.1    #安装指定版本
+
+
+3>卸载包
+
+  pip uninstall xxx
+
+4>升级包
+
+  pip install --upgrade xxx 
+
+
+  
